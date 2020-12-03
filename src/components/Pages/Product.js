@@ -1,7 +1,7 @@
-export default function Product({ style }) {
+export default function Product() {
   return (
     <>
-      <h3 style={style}>Product Page</h3>
+      <h3>Product Page</h3>
     </>
   );
 }

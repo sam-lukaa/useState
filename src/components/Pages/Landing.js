@@ -1,7 +1,7 @@
-export default function Landing({ style }) {
+export default function Landing() {
   return (
     <>
-      <h3 style={style}>Landing Page</h3>
+      <h3>Landing Page</h3>
     </>
   );
 }
