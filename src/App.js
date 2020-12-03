@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Landing from "./components/Pages/Landing";
+import Product from "./components/Pages/Landing";
 
-function App() {
+export default function App() {
+  const [dark, setDark] = useState(false);
+  const toggleTheme = () => setDark(!dark);
+
+  const themeStyles = {
+    background: dark ? "#333" : "#fff",
+    color: dark ? "#fff" : "#333",
+    height: "100vh",
+    width: "100%",
+  };
+
+  const btnStyles = {
+    background: dark ? "#fff" : "#333",
+    color: dark ? "#333" : "#fff",
+    height: "2rem",
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div style={themeStyles}>
+        <button onClick={toggleTheme} style={btnStyles}>
+          Toggle Theme
+        </button>
+
+        <Route exact path="/" component={Landing} />
+        <Switch>
+          <Route path="/products" component={Product} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
-
-export default App;
